@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Palette.h" />
     <ClInclude Include="Traffic.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Colors.h" />
@@ -147,15 +148,21 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Road.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TrafficController.h" />
     <ClInclude Include="TrafficLight.h" />
     <ClInclude Include="TrafficNode.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Palette.cpp" />
     <ClCompile Include="Traffic.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Road.cpp" />
+    <ClCompile Include="TrafficController.cpp" />
     <ClCompile Include="TrafficLight.cpp" />
+    <ClCompile Include="TrafficNode.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Traffic.rc" />

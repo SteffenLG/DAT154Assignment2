@@ -2,8 +2,9 @@
 
 #include "framework.h"
 #include "Colors.h"
+#include "TrafficNode.h"
 
-class TrafficLight
+class TrafficLight 
 {
 public:
 	enum State : int { RED = 1, REDYELLOW = 2, GREEN = 3, YELLOW = 4, OFF = 5 };
@@ -11,6 +12,9 @@ public:
 	void DrawLight(HDC hdc);
 	~TrafficLight();
 	void SetState(State currentState);
+	State GetState();
+	bool obstruct();
+	void CycleState();
 private:
 	HBRUSH brushRed;
 	HBRUSH brushBlack;
