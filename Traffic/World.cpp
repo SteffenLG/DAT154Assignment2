@@ -9,7 +9,7 @@ void World::Draw(HDC hdc, Palette palette)
 	DrawGrass(hdc, palette);
 	DrawRoads(hdc, palette);
 	DeleteObject(pen);
-	controller.Draw(hdc, palette);
+	controller->Draw(hdc, palette);
 }
 
 void World::DrawGrass(HDC hdc, Palette palette)
