@@ -75,3 +75,18 @@ void TrafficLight::DrawLight(HDC hdc) {
 void TrafficLight::SetState(State state) {
 	this->state = state;
 }
+
+TrafficLight::State TrafficLight::GetState() {
+	return this->state;
+}
+
+bool TrafficLight::obstruct() {
+	return this->state != GREEN;
+}
+
+void TrafficLight::CycleState()
+{
+	int currentState = (int)this->state;
+	int nextState = (currentState % 4) + 1;
+	this->state = State(nextState);
+}

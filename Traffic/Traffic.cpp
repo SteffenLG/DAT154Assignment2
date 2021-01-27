@@ -6,6 +6,8 @@
 #include "Colors.h"
 #include "TrafficLight.h"
 #include "Windowsx.h"
+#include "Palette.h"
+#include "World.h"
 
 #define MAX_LOADSTRING 100
 
@@ -16,8 +18,11 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class
 //objekt light
 //TrafficLight ;
 TrafficLight* light = new TrafficLight(150, 150, 200);
+World world(900, 1600);
+Palette palette;
 //light->SetState(TrafficLight::RED);
 int lightIterator = 1;
+
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -179,6 +184,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         HGDIOBJ org = SelectObject(hdc, brushRed);
         HGDIOBJ orgPen = SelectObject(hdc, pen);
+
+        world.Draw(hdc, palette);
 
         light->DrawLight(hdc);
     
