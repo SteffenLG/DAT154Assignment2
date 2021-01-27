@@ -2,14 +2,6 @@
 
 TrafficLight::TrafficLight(int x, int y, int height) {
 	
-	//lage brushes
-	brushRed = CreateSolidBrush(TrafficLightRed);
-	brushBlack = CreateSolidBrush(TraficLightBlack);
-	brushYellow = CreateSolidBrush(TrafficLightYellow);
-	brushGreen = CreateSolidBrush(TrafficLightGreen);
-	brushGray = CreateSolidBrush(TrafficLightGray);
-	pen = CreatePen(PS_NULL, 1, RGB(0, 0, 255));
-
 	//definere størrelser på ting
 	left = x;
 	top = y;
@@ -23,21 +15,16 @@ TrafficLight::TrafficLight(int x, int y, int height) {
 	
 }
 TrafficLight::~TrafficLight() {
-	DeleteObject(brushRed);
-	DeleteObject(brushBlack);
-	DeleteObject(brushYellow);
-	DeleteObject(brushGreen);
-	DeleteObject(brushGray);
-	DeleteObject(pen);
+
 }
-void TrafficLight::DrawLight(HDC hdc) {
+void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
 	int margin = (int) (width * 0.08);
-	SelectObject(hdc, pen);
-	SelectObject(hdc, brushBlack);
+	SelectObject(hdc, palette.InviPen);
+	SelectObject(hdc, palette.GetBrush(TrafficLightBlack));
 
 	Rectangle(hdc, left, top, right, bottom);
 	//gray lights
-	SelectObject(hdc, brushGray);
+	SelectObject(hdc, palette.GetBrush(TrafficLightGray));
 	
 	//light 1
 	Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
@@ -48,25 +35,25 @@ void TrafficLight::DrawLight(HDC hdc) {
 	switch (state) {
 	case 1:
 		//light 1 - red
-		SelectObject(hdc, brushRed);
+		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		break;
 	case 2:
 		//light 1 - red
-		SelectObject(hdc, brushRed);
+		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		//light 2 - yellow
-		SelectObject(hdc, brushYellow);
+		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
 	case 3:
 		//light 3 - green
-		SelectObject(hdc, brushGreen);
+		SelectObject(hdc, palette.GetBrush(TrafficLightGreen));
 		Ellipse(hdc, left + margin, top + width * 2 + margin, right - margin, top + width * 3 - margin);
 		break;
 	case 4:
 		//light 2 - yellow
-		SelectObject(hdc, brushYellow);
+		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
 	}

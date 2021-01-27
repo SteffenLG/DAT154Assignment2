@@ -11,10 +11,10 @@ class World
 	TrafficController *controller;
 public:
 	World(int h, int w) : height{ h }, width{ w }, controller{ nullptr } { InitController(); };
-	void Draw(HDC, Palette);
+	void Draw(HDC, Palette&);
 private:
-	void DrawGrass(HDC, Palette);
-	void DrawRoads(HDC, Palette);
+	void DrawGrass(HDC, Palette&);
+	void DrawRoads(HDC, Palette&);
 	void InitController();
 };
 

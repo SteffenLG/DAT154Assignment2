@@ -1,14 +1,14 @@
 #include "Palette.h"
 
-HBRUSH Palette::GetBrush(COLORREF color) {
+HBRUSH& Palette::GetBrush(COLORREF color) {
 	std::map<COLORREF, HBRUSH>::iterator brushIter = brushes.find(color);
 	if (brushIter != brushes.end()) {
 		return brushIter->second;
 	}
 	else {
 		HBRUSH brush = CreateSolidBrush(color);
-		brushes.insert({ color, brush });
-		return brush;
+		auto p = brushes.insert({ color, brush });
+		return p.first->second;
 	}
 }
 

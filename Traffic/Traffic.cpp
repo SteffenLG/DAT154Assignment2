@@ -178,16 +178,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HBRUSH brushRed;
         HPEN pen;
         
-        brushRed = CreateSolidBrush(RGB(255, 0, 0));
+        //brushRed = CreateSolidBrush(RGB(255, 0, 0));
         
-        pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
+        //pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
 
-        HGDIOBJ org = SelectObject(hdc, brushRed);
-        HGDIOBJ orgPen = SelectObject(hdc, pen);
+        HGDIOBJ org = SelectObject(hdc, palette.GetBrush(TrafficLightRed));
+        HGDIOBJ orgPen = SelectObject(hdc, palette.InviPen);
 
         world.Draw(hdc, palette);
 
-        light->DrawLight(hdc);
+        light->DrawLight(hdc, palette);
     
         SelectObject(hdc, org);
         SelectObject(hdc, orgPen);

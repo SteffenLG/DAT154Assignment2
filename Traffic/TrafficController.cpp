@@ -13,10 +13,10 @@ westLight{ w } {};
 
 void TrafficController::Draw(HDC hdc, Palette palette)
 {
-	northLight.DrawLight(hdc);
-	southLight.DrawLight(hdc);
-	eastLight.DrawLight(hdc);
-	westLight.DrawLight(hdc);
+	northLight.DrawLight(hdc, palette);
+	southLight.DrawLight(hdc, palette);
+	eastLight.DrawLight(hdc, palette);
+	westLight.DrawLight(hdc, palette);
 }
 
 void TrafficController::ChangeLightState()
