@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../DAT154_Assigment2/Point.h"
+#include "../Traffic/Point.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
