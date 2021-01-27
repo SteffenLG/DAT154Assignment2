@@ -8,9 +8,9 @@ class World
 {
 	int height;
 	int width;
-	TrafficController controller;
+	TrafficController *controller;
 public:
-	World(int h, int w) : height{ h }, width{ w } { InitController(); };
+	World(int h, int w) : height{ h }, width{ w }, controller{ nullptr } { InitController(); };
 	void Draw(HDC, Palette);
 private:
 	void DrawGrass(HDC, Palette);

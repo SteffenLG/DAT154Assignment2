@@ -9,7 +9,7 @@ void World::Draw(HDC hdc, Palette palette)
 	DrawGrass(hdc, palette);
 	DrawRoads(hdc, palette);
 	DeleteObject(pen);
-	controller.Draw(hdc, palette);
+	controller->Draw(hdc, palette);
 }
 
 void World::DrawGrass(HDC hdc, Palette palette)
@@ -37,7 +37,7 @@ void World::DrawRoads(HDC hdc, Palette palette)
 	LineTo(hdc, centerX, height);
 	MoveToEx(hdc, 0, centerY, nullptr);
 	LineTo(hdc, width, centerY);
-	//SelectObject(hdc, pen)
+	//SelectObject(hdc, pen);
 	Rectangle(hdc,
 		centerX - laneWidth,
 		centerY - laneWidth,
@@ -45,3 +45,17 @@ void World::DrawRoads(HDC hdc, Palette palette)
 		centerY + laneWidth);
 }
 
+void World::InitController()
+{
+	int centerX = width / 2;
+	int centerY = height / 2;
+	int laneWidth = 100;
+	int laneMid = laneWidth / 2;
+
+	controller = new TrafficController(
+		*new TrafficLight(centerX - laneMid, centerY - laneWidth, 80),
+		*new TrafficLight(centerX + laneWidth, centerY - laneMid, 80),
+		*new TrafficLight(centerX + laneMid, centerY + laneWidth, 80),
+		*new TrafficLight(centerX - laneWidth, centerY + laneMid, 80)
+	);
+}
