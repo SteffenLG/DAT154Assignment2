@@ -8,7 +8,7 @@ class World
 {
 	int height;
 	int width;
-	TrafficController controller;
+	TrafficController* controller;
 public:
 	World(int h, int w) : height{ h }, width{ w } { InitController(); };
 	void Draw(HDC, Palette);
