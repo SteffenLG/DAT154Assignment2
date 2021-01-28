@@ -17,7 +17,6 @@ WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class 
 //objekt light
 //TrafficLight ;
-TrafficLight* light = new TrafficLight(150, 150, 200);
 World world(900, 1600);
 Palette palette;
 //light->SetState(TrafficLight::RED);
@@ -141,12 +140,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_LBUTTONDOWN:
     {
         //delete &light;
-        light = new TrafficLight(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 200);
+        //light = new TrafficLight(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 200);
         InvalidateRect(hWnd, NULL, true);
         lightIterator %= 4;
         lightIterator++;
-        
-        light->SetState(TrafficLight::State(lightIterator));
+        world.Update();
 
         return 0;
     }
@@ -186,14 +184,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HGDIOBJ orgPen = SelectObject(hdc, palette.InviPen);
 
         world.Draw(hdc, palette);
-
-        light->DrawLight(hdc, palette);
     
         SelectObject(hdc, org);
         SelectObject(hdc, orgPen);
-
-
-        
 
         EndPaint(hWnd, &ps);
     }
