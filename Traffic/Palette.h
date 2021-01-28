@@ -7,12 +7,9 @@ class Palette
 {
 	std::map<COLORREF, HBRUSH> brushes;
 public:
-	Palette() : brushes{ } {
-	InviPen = CreatePen(PS_NULL, 1, RGB(0, 0, 255));
-	LinePen = CreatePen(PS_DASH, 100 / 20, LineYellow);
-	};
+	Palette();
 	~Palette();
-	HBRUSH& GetBrush(COLORREF);
+	HBRUSH GetBrush(COLORREF);
 	//HBRUSH GetRandomBrush();
 
 	HPEN InviPen;
