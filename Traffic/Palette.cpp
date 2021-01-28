@@ -3,20 +3,12 @@
 Palette::Palette() {
 
 	brushes = {};
-	
-	//next gen mapless brushes
-	TrafficLightRedBrush = CreateSolidBrush(TrafficLightRed);
-	TrafficLightYellowBrush = CreateSolidBrush(TrafficLightYellow);
 
 	InviPen = CreatePen(PS_NULL, 1, RGB(0, 0, 255));
 	LinePen = CreatePen(PS_DASH, 100 / 20, LineYellow);
 	WhiteLinePen = CreatePen(PS_DASH, 100 / 20, LineWhite);
 }
 HBRUSH Palette::GetBrush(COLORREF color) {
-
-	//return brushes[color];
-
-	//Old version of GetBrush
 	std::map<COLORREF, HBRUSH>::iterator brushIter = brushes.find(color);
 	
 	if (brushIter != brushes.end()) {

@@ -35,15 +35,15 @@ void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
 	switch (state) {
 	case State(1):
 		//light 1 - red
-		SelectObject(hdc, palette.TrafficLightRedBrush);
+		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		break;
 	case State(2):
 		//light 1 - red
-		SelectObject(hdc, palette.TrafficLightRedBrush);
+		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		//light 2 - yellow
-		SelectObject(hdc, palette.TrafficLightYellowBrush);
+		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
 	case State(3):
@@ -53,7 +53,7 @@ void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
 		break;
 	case State(4):
 		//light 2 - yellow
-		SelectObject(hdc, palette.TrafficLightYellowBrush);
+		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
 	}
