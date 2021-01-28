@@ -1,6 +1,6 @@
 #include "Car.h"
 #include "Colors.h"
 
-bool Car::obstruct() {
+bool Car::Obstruct() {
 	return true;
 }

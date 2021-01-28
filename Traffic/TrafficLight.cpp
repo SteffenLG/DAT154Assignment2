@@ -1,4 +1,5 @@
 #include "TrafficLight.h"
+#include "TrafficLightStates.h"
 
 TrafficLight::TrafficLight(int x, int y, int height) {
 	
@@ -10,8 +11,7 @@ TrafficLight::TrafficLight(int x, int y, int height) {
 	bottom = top + height;
 
 	//sette default state
-	state = OFF;
-	
+	state = State::OFF;
 	
 }
 TrafficLight::~TrafficLight() {
@@ -33,27 +33,27 @@ void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
 	//light 3
 	Ellipse(hdc, left + margin, top + width * 2 + margin, right - margin, top + width * 3 - margin);
 	switch (state) {
-	case 1:
+	case State(1):
 		//light 1 - red
-		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
+		SelectObject(hdc, palette.TrafficLightRedBrush);
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		break;
-	case 2:
+	case State(2):
 		//light 1 - red
-		SelectObject(hdc, palette.GetBrush(TrafficLightRed));
+		SelectObject(hdc, palette.TrafficLightRedBrush);
 		Ellipse(hdc, left + margin, top + margin, right - margin, top + width - margin);
 		//light 2 - yellow
-		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
+		SelectObject(hdc, palette.TrafficLightYellowBrush);
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
-	case 3:
+	case State(3):
 		//light 3 - green
 		SelectObject(hdc, palette.GetBrush(TrafficLightGreen));
 		Ellipse(hdc, left + margin, top + width * 2 + margin, right - margin, top + width * 3 - margin);
 		break;
-	case 4:
+	case State(4):
 		//light 2 - yellow
-		SelectObject(hdc, palette.GetBrush(TrafficLightYellow));
+		SelectObject(hdc, palette.TrafficLightYellowBrush);
 		Ellipse(hdc, left + margin, top + width + margin, right - margin, top + width * 2 - margin);
 		break;
 	}
@@ -63,12 +63,12 @@ void TrafficLight::SetState(State state) {
 	this->state = state;
 }
 
-TrafficLight::State TrafficLight::GetState() {
+State TrafficLight::GetState() {
 	return this->state;
 }
 
 bool TrafficLight::obstruct() {
-	return this->state != GREEN;
+	return this->state != State::GREEN;
 }
 
 void TrafficLight::CycleState()

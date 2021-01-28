@@ -14,6 +14,8 @@ protected:
 		speed{ s }, length{ l },
 		next{ nullptr } {};
 public:
-	virtual bool obstruct() = 0;
+	virtual bool Obstruct() = 0;
+	void SetNext(TrafficNode* next);
+	TrafficNode* GetNext();
 };
 

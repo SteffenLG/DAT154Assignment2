@@ -150,6 +150,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TrafficController.h" />
     <ClInclude Include="TrafficLight.h" />
+    <ClInclude Include="TrafficLightStates.h" />
     <ClInclude Include="TrafficNode.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

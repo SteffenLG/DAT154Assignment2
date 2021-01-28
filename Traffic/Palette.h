@@ -12,6 +12,8 @@ public:
 	HBRUSH GetBrush(COLORREF);
 	//HBRUSH GetRandomBrush();
 
+	HBRUSH TrafficLightRedBrush;
+	HBRUSH TrafficLightYellowBrush;
 	HPEN InviPen;
 	HPEN LinePen;
 };

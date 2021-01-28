@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "../Traffic/Point.h"
 #include "../Traffic/TrafficLight.h"
+#include "../Traffic/TrafficLightStates.h"
+#include "../Traffic/Palette.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -33,23 +35,23 @@ namespace Ass2UnitTests
 		{
 			TrafficLight light(1, 1, 0);
 			Assert::AreEqual(((int)light.GetState()), 5);
-			light.SetState(TrafficLight::GREEN);
-			int green = (int)TrafficLight::GREEN;
+			light.SetState(State::GREEN);
+			int green = (int)State::GREEN;
 			Assert::AreEqual(((int)light.GetState()) , green);
 		}
 		TEST_METHOD(TestObstruct)
 		{
 			TrafficLight light(1, 1, 0);
-			light.SetState(TrafficLight::GREEN);
+			light.SetState(State::GREEN);
 			Assert::AreEqual(light.obstruct(), false);
-			light.SetState(TrafficLight::REDYELLOW);
+			light.SetState(State::REDYELLOW);
 			Assert::AreEqual(light.obstruct(), true);
 		}
 	};
 	TEST_CLASS(Name)
 	{
 	public:
-		TEST_METHOD(TestSomething)
+		TEST_METHOD(TestSomethingBlaBlabla)
 		{
 
 		}

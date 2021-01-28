@@ -4,11 +4,11 @@
 #include "Colors.h"
 #include "TrafficNode.h"
 #include "Palette.h"
+#include "TrafficLightStates.h"
 
 class TrafficLight 
 {
 public:
-	enum State : int { RED = 1, REDYELLOW = 2, GREEN = 3, YELLOW = 4, OFF = 5 };
 	TrafficLight(int x, int y, int height);
 	void DrawLight(HDC hdc, Palette&);
 	~TrafficLight();

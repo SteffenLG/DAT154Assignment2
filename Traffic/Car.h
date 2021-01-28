@@ -11,6 +11,6 @@ public:
 	Car(Point p, Point d, double s, COLORREF c, int l) :
 		TrafficNode(p, d, s, l),
 		color{ c } {};
-	bool obstruct() override;
+	bool Obstruct() override;
 };
 

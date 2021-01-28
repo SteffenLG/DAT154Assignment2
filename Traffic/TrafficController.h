@@ -11,7 +11,7 @@ public:
 	TrafficLight westLight;
 
 	TrafficController(TrafficLight, TrafficLight, TrafficLight, TrafficLight);
-	void Draw(HDC, Palette);
+	void Draw(HDC, Palette&);
 	void ChangeLightState();
 };
 

@@ -15,10 +15,10 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class 
-//objekt light
-//TrafficLight ;
+
+//Global objects
 World world(900, 1600);
-Palette palette;
+static Palette palette;
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -132,14 +132,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    
     switch (message)
     {
     case WM_LBUTTONDOWN:
-    {
-        //delete &light;
-        //light = new TrafficLight(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 200);
-        InvalidateRect(hWnd, NULL, true);
+    { 
         world.Update();
+        InvalidateRect(hWnd, NULL, true);
 
         return 0;
     }
@@ -168,13 +167,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HDC hdc = BeginPaint(hWnd, &ps);
         // TODO: Add any drawing code that uses hdc here...
 
-        HBRUSH brushRed;
-        HPEN pen;
-        
-        //brushRed = CreateSolidBrush(RGB(255, 0, 0));
-        
-        //pen = CreatePen(PS_SOLID, 2, RGB(0, 0, 0));
-
         HGDIOBJ org = SelectObject(hdc, palette.GetBrush(TrafficLightRed));
         HGDIOBJ orgPen = SelectObject(hdc, palette.InviPen);
 
@@ -184,8 +176,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         SelectObject(hdc, orgPen);
 
         EndPaint(hWnd, &ps);
+        break;
     }
-    break;
+    
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
