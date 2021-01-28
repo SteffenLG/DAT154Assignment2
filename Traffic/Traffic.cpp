@@ -19,9 +19,6 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class
 //TrafficLight ;
 World world(900, 1600);
 Palette palette;
-//light->SetState(TrafficLight::RED);
-int lightIterator = 1;
-
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -142,8 +139,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         //delete &light;
         //light = new TrafficLight(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 200);
         InvalidateRect(hWnd, NULL, true);
-        lightIterator %= 4;
-        lightIterator++;
         world.Update();
 
         return 0;
