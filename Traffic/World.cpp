@@ -12,6 +12,12 @@ void World::Draw(HDC hdc, Palette& palette)
 	controller->Draw(hdc, palette);
 }
 
+void World::Update() 
+{
+	//TODO gjøre dette basert på timer elns
+	controller->ChangeLightState();
+}
+
 void World::DrawGrass(HDC hdc, Palette& palette)
 {
 	SelectObject(hdc, palette.InviPen);
