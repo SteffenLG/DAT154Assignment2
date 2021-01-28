@@ -10,6 +10,7 @@ Palette::Palette() {
 
 	InviPen = CreatePen(PS_NULL, 1, RGB(0, 0, 255));
 	LinePen = CreatePen(PS_DASH, 100 / 20, LineYellow);
+	WhiteLinePen = CreatePen(PS_DASH, 100 / 20, LineWhite);
 }
 HBRUSH Palette::GetBrush(COLORREF color) {
 
@@ -39,4 +40,5 @@ Palette::~Palette() {
 	DeleteObject(TrafficLightYellowBrush);
 	DeleteObject(InviPen);
 	DeleteObject(LinePen);
+	DeleteObject(WhiteLinePen);
 }

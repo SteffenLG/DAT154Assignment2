@@ -16,5 +16,6 @@ public:
 	HBRUSH TrafficLightYellowBrush;
 	HPEN InviPen;
 	HPEN LinePen;
+	HPEN WhiteLinePen;
 };
 

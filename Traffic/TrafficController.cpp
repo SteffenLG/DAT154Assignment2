@@ -13,8 +13,8 @@ westLight{ w }
 {
 	northLight.SetState(State::RED);
 	southLight.SetState(State::RED);
-	eastLight.SetState(State::RED);
-	westLight.SetState(State::RED);
+	eastLight.SetState(State::GREEN);
+	westLight.SetState(State::GREEN);
 };
 
 void TrafficController::Draw(HDC hdc, Palette& palette)

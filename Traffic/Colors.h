@@ -9,3 +9,4 @@ const COLORREF TrafficLightGray = RGB(70, 70, 75);
 const COLORREF GrassGreen = RGB(40, 180, 60);
 const COLORREF Asphalt = RGB(30, 30, 30);
 const COLORREF LineYellow = RGB(200, 200, 20);
+const COLORREF LineWhite = RGB(210, 210, 210);

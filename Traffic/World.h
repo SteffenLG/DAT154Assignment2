@@ -16,7 +16,7 @@ public:
 	void Update();
 private:
 	void DrawGrass(HDC, Palette&);
-	void DrawRoads(HDC, Palette*);
+	void DrawRoads(HDC, Palette&);
 	void InitController();
 };
 
