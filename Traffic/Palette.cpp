@@ -27,9 +27,7 @@ Palette::~Palette() {
 	for (; iter != brushes.end(); iter++) {
 		DeleteObject(iter->second);
 	}
-	
-	DeleteObject(TrafficLightRedBrush);
-	DeleteObject(TrafficLightYellowBrush);
+
 	DeleteObject(InviPen);
 	DeleteObject(LinePen);
 	DeleteObject(WhiteLinePen);
