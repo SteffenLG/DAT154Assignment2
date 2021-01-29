@@ -16,6 +16,7 @@ public:
 	virtual bool Obstruct();
 	void SetNext(TrafficNode*);
 	TrafficNode* GetNext();
+	Point GetPos();
 	virtual void Draw(HDC hdc, Palette&);
 	virtual void Update(int frameTime, HWND hWnd);
 	virtual Point TopLeft();

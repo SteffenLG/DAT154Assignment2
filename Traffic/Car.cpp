@@ -1,5 +1,6 @@
 #include "Car.h"
 #include "Colors.h"
+#include <algorithm>
 
 bool Car::Obstruct() 
 {
@@ -72,7 +73,21 @@ void Car::Update(int frameTime, HWND hWnd)
 
 void Car::MakeDecision()
 {
+	if (pos.DistanceTo(next->GetPos()) < 40 && next->Obstruct())
+	{
+		ChangeSpeed(-10);
+	}
+	else {
+		ChangeSpeed(5);
+	}
+}
 
+void Car::ChangeSpeed(double delta)
+{
+	double newSpeed = speed + delta;
+
+	speed = std::clamp(newSpeed, 0, 16);
+	speed = std::min(16.0, std::max(newSpeed, 0.0));
 }
 
 void Car::UpdatePosition(int frameTime)

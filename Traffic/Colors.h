@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdlib>
 
 const COLORREF TrafficLightBlack = RGB(10, 10, 10);
 const COLORREF TrafficLightRed = RGB(255, 50, 50);
@@ -17,3 +18,10 @@ const COLORREF CarColors[] = {
 	RGB(56, 18, 243),
 	RGB(119, 14, 87),
 };
+
+COLORREF RandomColor()
+{
+	int size = sizeof(CarColors) / sizeof(CarColors[0]);
+	int randIndex = rand() % size;
+	return CarColors[randIndex];
+}

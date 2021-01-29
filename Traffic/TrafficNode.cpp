@@ -32,3 +32,8 @@ Point TrafficNode::TopLeft() {
 Point TrafficNode::BottomRight() {
 	return pos;
 }
+
+Point TrafficNode::GetPos()
+{
+	return pos;
+}

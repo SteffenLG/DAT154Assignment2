@@ -20,5 +20,5 @@ private:
 	void UpdatePosition(int frameTime);
 	Point TopLeft() override;
 	Point BottomRight() override;
+	void ChangeSpeed(double);
 };
-

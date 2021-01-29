@@ -33,3 +33,20 @@ double Point::DistanceTo(Point other)
  {
 	 return (int)y;
  }
+
+ Point Point::DirectionTo(Point other)
+ {
+	 double xDiff = this->x - other.x;
+	 double yDiff = this->y - other.y;
+	 
+	 return Point(Signum(xDiff), Signum(yDiff));
+ }
+
+ double Point::Signum(double x)
+ {
+	 if (x > 0)
+		 return 1;
+	 if (x < 0)
+		 return -1;
+	 return 0;
+ }

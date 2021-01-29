@@ -10,7 +10,10 @@ public:
 	int GetIntX();
 	int GetIntY();
 	double DistanceTo(Point);
+	Point DirectionTo(Point);
 	Point operator+(Point);
 	Point operator*(double);
+private:
+	double Signum(double);
 };
 
