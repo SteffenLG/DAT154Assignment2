@@ -4,7 +4,6 @@
 #include "Point.h"
 #include "Car.h"
 #include "TrafficLight.h"
-#include "Colors.h"
 
 class Road
 {
@@ -24,5 +23,6 @@ public:
 	void Update(int frameTime, HWND hWnd);
 private:
 	void ManageList();
+	COLORREF RandomColor();
 };
 

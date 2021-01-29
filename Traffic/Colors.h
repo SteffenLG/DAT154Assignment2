@@ -19,9 +19,3 @@ const COLORREF CarColors[] = {
 	RGB(119, 14, 87),
 };
 
-COLORREF RandomColor()
-{
-	int size = sizeof(CarColors) / sizeof(CarColors[0]);
-	int randIndex = rand() % size;
-	return CarColors[randIndex];
-}

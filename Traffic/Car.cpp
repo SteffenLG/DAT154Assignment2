@@ -76,6 +76,8 @@ void Car::Update(int frameTime, HWND hWnd)
 
 void Car::MakeDecision()
 {
+	if (next == nullptr)
+		return;
 	if (pos.DistanceTo(next->GetPos()) < 40 && next->Obstruct())
 	{
 		ChangeSpeed(-10);

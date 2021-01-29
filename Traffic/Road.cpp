@@ -2,7 +2,7 @@
 
 void Road::SpawnCar()
 {
-	Car car(start, start.DirectionTo(end), 1, RandomColor(), 80);
+	Car car(start, start.DirectionTo(end), 0, RandomColor(), 80);
 	car.SetNext(startNode->GetNext());
 	startNode->SetNext(&car);
 }
@@ -55,3 +55,9 @@ void Road::ManageList()
 		endNode->SetNext(nullptr);
 }
 
+COLORREF Road::RandomColor()
+{
+	int size = sizeof(CarColors) / sizeof(CarColors[0]);
+	int randIndex = rand() % size;
+	return CarColors[randIndex];
+}
