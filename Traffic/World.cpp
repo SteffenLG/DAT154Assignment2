@@ -12,10 +12,12 @@ void World::Draw(HDC hdc, Palette& palette)
 	controller->Draw(hdc, palette);
 }
 
-void World::Update() 
+void World::Update(HWND hWnd) 
 {
 	//TODO gjøre dette basert på timer elns
 	controller->ChangeLightState();
+
+	controller->Update(hWnd);
 }
 
 void World::DrawGrass(HDC hdc, Palette& palette)

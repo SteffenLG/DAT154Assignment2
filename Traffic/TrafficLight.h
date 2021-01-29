@@ -6,15 +6,16 @@
 #include "Palette.h"
 #include "TrafficLightStates.h"
 
-class TrafficLight 
+class TrafficLight:public TrafficNode
 {
 public:
 	TrafficLight(int x, int y, int height);
-	void DrawLight(HDC hdc, Palette&);
+	void Draw(HDC hdc, Palette&) override;
+	void Update(int frameTime, HWND hWnd) override;
 	~TrafficLight();
 	void SetState(State currentState);
 	State GetState();
-	bool obstruct();
+	bool Obstruct();
 	void CycleState();
 private:
 	State state;
@@ -23,5 +24,6 @@ private:
 	int width;
 	int right;
 	int bottom;
+
 };
 

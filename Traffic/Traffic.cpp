@@ -160,8 +160,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     case WM_LBUTTONDOWN:
     { 
-        world.Update();
-        InvalidateRect(hWnd, NULL, true);
+        world.Update(hWnd);
+        //InvalidateRect(hWnd, NULL, true);
 
         return 0;
     }
@@ -213,9 +213,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
         case LIGHT_TIMER:
             // process the light timer
-            world.Update();
-            InvalidateRect(hWnd, NULL, true);
-            
+            world.Update(hWnd);
 
             return 0;
 

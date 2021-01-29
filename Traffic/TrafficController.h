@@ -13,5 +13,6 @@ public:
 	TrafficController(TrafficLight, TrafficLight, TrafficLight, TrafficLight);
 	void Draw(HDC, Palette&);
 	void ChangeLightState();
+	void Update(HWND hWnd);
 };
 

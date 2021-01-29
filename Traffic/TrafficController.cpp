@@ -19,10 +19,10 @@ westLight{ w }
 
 void TrafficController::Draw(HDC hdc, Palette& palette)
 {
-	northLight.DrawLight(hdc, palette);
-	southLight.DrawLight(hdc, palette);
-	eastLight.DrawLight(hdc, palette);
-	westLight.DrawLight(hdc, palette);
+	northLight.Draw(hdc, palette);
+	southLight.Draw(hdc, palette);
+	eastLight.Draw(hdc, palette);
+	westLight.Draw(hdc, palette);
 }
 
 void TrafficController::ChangeLightState()
@@ -31,4 +31,11 @@ void TrafficController::ChangeLightState()
 	southLight.CycleState();
 	eastLight.CycleState();
 	westLight.CycleState();
+}
+
+void TrafficController::Update(HWND hWnd) {
+	northLight.Update(17,hWnd);
+	southLight.Update(17,hWnd);
+	eastLight.Update(17,hWnd);
+	westLight.Update(17,hWnd);
 }

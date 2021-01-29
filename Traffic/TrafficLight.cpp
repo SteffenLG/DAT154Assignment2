@@ -1,8 +1,10 @@
 #include "TrafficLight.h"
 #include "TrafficLightStates.h"
 
-TrafficLight::TrafficLight(int x, int y, int height) {
+TrafficLight::TrafficLight(int x, int y, int height):TrafficNode(Point(x, y), Point(0, 0), 0, height)
+{
 	
+
 	//definere størrelser på ting
 	left = x;
 	top = y;
@@ -17,7 +19,7 @@ TrafficLight::TrafficLight(int x, int y, int height) {
 TrafficLight::~TrafficLight() {
 
 }
-void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
+void TrafficLight::Draw(HDC hdc, Palette& palette) {
 	int margin = (int) (width * 0.08);
 	SelectObject(hdc, palette.InviPen);
 	SelectObject(hdc, palette.GetBrush(TrafficLightBlack));
@@ -59,6 +61,11 @@ void TrafficLight::DrawLight(HDC hdc, Palette& palette) {
 	}
 }
 
+void TrafficLight::Update(int frameTime, HWND hWnd) {
+	const RECT rect{ left,top, right, bottom};
+	InvalidateRect(hWnd, &rect, false);
+}
+
 void TrafficLight::SetState(State state) {
 	this->state = state;
 }
@@ -67,7 +74,7 @@ State TrafficLight::GetState() {
 	return this->state;
 }
 
-bool TrafficLight::obstruct() {
+bool TrafficLight::Obstruct() {
 	return this->state != State::GREEN;
 }
 
