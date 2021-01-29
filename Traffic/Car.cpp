@@ -43,5 +43,5 @@ void Car::MakeDecision()
 
 void Car::UpdatePosition(int frameTime)
 {
-	pos = pos + direction * (speed / 10.0) * (frameTime / 1000.0);
+	pos = pos + direction * (speed * 10.0) * (frameTime / 1000.0);
 }

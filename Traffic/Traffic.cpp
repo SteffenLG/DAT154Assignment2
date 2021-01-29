@@ -24,6 +24,11 @@ const UINT frameTime = 17; //in ms
 //Global objects
 World world(900, 1600);
 static Palette palette;
+Car cars[] = {
+    Car(Point(100, 100), Point(0, 1), 1, CarColors[1], 80),
+    Car(Point(350, 100), Point(1, 0), 5, CarColors[2], 120),
+    Car(Point(100, 350), Point(0, -1), 10, CarColors[3], 80),
+};
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -189,11 +194,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HGDIOBJ orgPen = SelectObject(hdc, palette.InviPen);
 
         world.Draw(hdc, palette);
-        Car cars[] = {
-            Car(Point(100, 100), Point(0, 1), 1, CarColors[1], 80),
-            Car(Point(350, 100), Point(1, 0), 5, CarColors[2], 120),
-            Car(Point(100, 350), Point(0, -1), 10, CarColors[3], 80),
-        };
+
         for (Car car : cars)
         {
             car.Draw(hdc, palette);
@@ -220,7 +221,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         case FRAME_TIMER:
             // proces the frametime timer
-
+            for (Car car : cars)
+            {
+                car.Update(frameTime);
+            }
             return 0;
         }
     }

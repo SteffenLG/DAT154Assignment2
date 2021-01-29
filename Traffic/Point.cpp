@@ -23,3 +23,13 @@ double Point::DistanceTo(Point other)
  {
 	 return Point(this->x * scalar, this->y * scalar);
  }
+
+ int Point::GetIntX()
+ {
+	 return (int)x;
+ }
+
+ int Point::GetIntY()
+ {
+	 return (int)y;
+ }
