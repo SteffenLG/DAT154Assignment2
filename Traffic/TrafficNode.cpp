@@ -15,7 +15,7 @@ TrafficNode* TrafficNode::GetNext()
 	return this->next;
 }
 
-void TrafficNode::Draw()
+void TrafficNode::Draw(HDC hdc, Palette& palette)
 {
 	return;
 }

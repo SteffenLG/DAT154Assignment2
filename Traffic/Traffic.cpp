@@ -8,6 +8,7 @@
 #include "Windowsx.h"
 #include "Palette.h"
 #include "World.h"
+#include "Car.h"
 
 #define MAX_LOADSTRING 100
 
@@ -171,7 +172,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         HGDIOBJ orgPen = SelectObject(hdc, palette.InviPen);
 
         world.Draw(hdc, palette);
-    
+        Car cars[] = {
+            Car(Point(100, 100), Point(0, 1), 1, CarColors[1], 80),
+            Car(Point(350, 100), Point(1, 0), 5, CarColors[2], 120),
+            Car(Point(100, 350), Point(0, -1), 10, CarColors[3], 80),
+        };
+        for (Car car : cars)
+        {
+            car.Draw(hdc, palette);
+        }
+        
+
         SelectObject(hdc, org);
         SelectObject(hdc, orgPen);
 

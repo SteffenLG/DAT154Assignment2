@@ -7,6 +7,7 @@ Palette::Palette() {
 	InviPen = CreatePen(PS_NULL, 1, RGB(0, 0, 255));
 	LinePen = CreatePen(PS_DASH, 100 / 20, LineYellow);
 	WhiteLinePen = CreatePen(PS_DASH, 100 / 20, LineWhite);
+	BlackPen = CreatePen(PS_SOLID, 1, TrafficLightBlack);
 }
 HBRUSH Palette::GetBrush(COLORREF color) {
 	std::map<COLORREF, HBRUSH>::iterator brushIter = brushes.find(color);

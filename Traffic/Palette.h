@@ -17,5 +17,6 @@ public:
 	HPEN InviPen;
 	HPEN LinePen;
 	HPEN WhiteLinePen;
+	HPEN BlackPen;
 };
 

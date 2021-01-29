@@ -1,5 +1,6 @@
 #pragma once
 #include "Point.h"
+#include "Palette.h"
 
 class TrafficNode
 {
@@ -15,8 +16,9 @@ protected:
 		next{ nullptr } {};
 public:
 	virtual bool Obstruct();
-	void SetNext(TrafficNode* next);
+	void SetNext(TrafficNode*);
 	TrafficNode* GetNext();
-	void Draw();
+	virtual void Draw(HDC hdc, Palette&);
+	virtual void Update(int frameTime);
 };
 

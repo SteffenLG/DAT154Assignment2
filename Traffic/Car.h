@@ -12,5 +12,11 @@ public:
 		TrafficNode(p, d, s, l),
 		color{ c } {};
 	bool Obstruct() override;
+	void Draw(HDC hdc, Palette&) override;
+	bool IsHorizontal();
+	void Update(int) override;
+private:
+	void MakeDecision();
+	void UpdatePosition(int frameTime);
 };
 
