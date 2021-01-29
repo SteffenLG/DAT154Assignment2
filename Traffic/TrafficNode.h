@@ -19,6 +19,8 @@ public:
 	void SetNext(TrafficNode*);
 	TrafficNode* GetNext();
 	virtual void Draw(HDC hdc, Palette&);
-	virtual void Update(int frameTime);
+	virtual void Update(int frameTime, HWND hWnd);
+	virtual Point TopLeft();
+	virtual Point BottomRight();
 };
 

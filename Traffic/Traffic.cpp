@@ -195,7 +195,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         world.Draw(hdc, palette);
 
-        for (Car car : cars)
+        for (Car &car : cars)
         {
             car.Draw(hdc, palette);
         }
@@ -221,10 +221,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         case FRAME_TIMER:
             // proces the frametime timer
-            for (Car car : cars)
+            for (Car &car : cars)
             {
-                car.Update(frameTime);
+                car.Update(frameTime, hWnd);
             }
+
             return 0;
         }
     }

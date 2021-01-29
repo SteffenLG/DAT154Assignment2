@@ -14,9 +14,11 @@ public:
 	bool Obstruct() override;
 	void Draw(HDC hdc, Palette&) override;
 	bool IsHorizontal();
-	void Update(int) override;
+	void Update(int, HWND) override;
 private:
 	void MakeDecision();
 	void UpdatePosition(int frameTime);
+	Point TopLeft() override;
+	Point BottomRight() override;
 };
 
