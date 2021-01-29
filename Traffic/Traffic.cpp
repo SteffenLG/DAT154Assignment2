@@ -11,11 +11,15 @@
 #include "Car.h"
 
 #define MAX_LOADSTRING 100
-
+#define LIGHT_TIMER 1001
+#define FRAME_TIMER 1002
 // Global Variables:
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class 
+
+
+const UINT frameTime = 17; //in ms
 
 //Global objects
 World world(900, 1600);
@@ -136,6 +140,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     
     switch (message)
     {
+    case WM_CREATE:
+    {
+        SetTimer(hWnd,            // handle to main window 
+            LIGHT_TIMER,               // timer identifier 
+            5000,                 // 5-second interval 
+            (TIMERPROC)NULL);     // no timer callback 
+
+
+        SetTimer(hWnd,            // handle to main window 
+            FRAME_TIMER,               // timer identifier 
+            frameTime,            // interval 
+            (TIMERPROC)NULL);     // no timer callback 
+    }
     case WM_LBUTTONDOWN:
     { 
         world.Update();
@@ -189,6 +206,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         EndPaint(hWnd, &ps);
         break;
     }
+    case WM_TIMER:
+    {
+        switch (wParam)
+        {
+        case LIGHT_TIMER:
+            // process the light timer
+            world.Update();
+            InvalidateRect(hWnd, NULL, true);
+            
+
+            return 0;
+
+        case FRAME_TIMER:
+            // proces the frametime timer
+
+            return 0;
+        }
+    }
+        
     
     case WM_DESTROY:
         PostQuitMessage(0);
