@@ -68,6 +68,9 @@ void Car::Update(int frameTime, HWND hWnd)
 	Point xtrembottomRight = Point(oldBottomRight.x > newBottomRight.x ? oldBottomRight.x : newBottomRight.x,
 		oldBottomRight.y > newBottomRight.y ? oldBottomRight.y : newBottomRight.y);
 	const RECT rect{ xtremtopLeft.GetIntX(),xtremtopLeft.GetIntY(), xtrembottomRight.GetIntX(), xtrembottomRight.GetIntY() };
+
+
+
 	InvalidateRect(hWnd, &rect,false);
 }
 
@@ -86,8 +89,12 @@ void Car::ChangeSpeed(double delta)
 {
 	double newSpeed = speed + delta;
 
-	speed = std::clamp(newSpeed, 0, 16);
-	speed = std::min(16.0, std::max(newSpeed, 0.0));
+	if (newSpeed < 0)
+		newSpeed = 0;
+	else if (newSpeed > 16)
+		newSpeed = 16;
+
+	speed = newSpeed;
 }
 
 void Car::UpdatePosition(int frameTime)

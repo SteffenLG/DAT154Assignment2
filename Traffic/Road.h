@@ -13,14 +13,16 @@ class Road
 	TrafficNode *startNode;
 	TrafficNode *endNode;
 public:
-	Road(Point s, Point e, TrafficLight* light) : start{ s }, end{ e } {
-		startNode = &TrafficNode(start, Point(0, 0), 0, 0);
-		endNode = &TrafficNode(end, Point(0, 0), 0, 0);
+	Road(Point s, Point e, TrafficLight *light) : start{ s }, end{ e } {
+		startNode = new TrafficNode(start, Point(0, 0), 0, 0);
+		endNode = new TrafficNode(end, Point(0, 0), 0, 0);
 		startNode->SetNext(light);
 		light->SetNext(endNode);
 	};
 	void SpawnCar();
 	void Draw(HDC hdc, Palette &palette);
 	void Update(int frameTime, HWND hWnd);
+private:
+	void ManageList();
 };
 

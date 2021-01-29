@@ -25,4 +25,33 @@ void Road::Update(int frameTime, HWND hWnd)
 		temp->Update(frameTime, hWnd);
 		temp = temp->GetNext();
 	}
+
+	ManageList();
 }
+
+void Road::ManageList()
+{
+	TrafficNode* temp = startNode;
+	while (temp->GetNext() != endNode)
+	{
+		TrafficNode* next = temp->GetNext();
+		TrafficNode* nextNext = temp->GetNext()->GetNext();
+		if (next->Obstruct() && !nextNext->Obstruct()) 
+		{
+			double nextDistance = temp->GetPos().DistanceTo(next->GetPos());
+			double nextNextDistance = temp->GetPos().DistanceTo(nextNext->GetPos());
+
+			if (nextNextDistance < nextDistance) 
+			{
+				temp->SetNext(nextNext);
+				next->SetNext(nextNext->GetNext());
+				nextNext->SetNext(next);
+			}
+		}
+		temp = temp->GetNext();
+	}
+
+	if (endNode->GetNext() != nullptr)
+		endNode->SetNext(nullptr);
+}
+
