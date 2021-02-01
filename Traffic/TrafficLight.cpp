@@ -1,21 +1,15 @@
 #include "TrafficLight.h"
 #include "TrafficLightStates.h"
 
-TrafficLight::TrafficLight(int x, int y, int height) : TrafficNode(Point(x, y), Point(0, 0), 0, height)
-{
-	
-
-	//definere størrelser på ting
-	left = x;
-	top = y;
-	width = height / 3;
-	right = left + width;
-	bottom = top + height;
-
-	//sette default state
-	state = State::OFF;
-	
-}
+TrafficLight::TrafficLight(int x, int y, int height) :
+	TrafficNode(Point(x, y), Point(0, 0), 0, height),
+	left{ x },
+	top{ y },
+	width{ height / 3 },
+	right{ left + width },
+	bottom{ top + height },
+	state{ State::OFF }
+{};
 TrafficLight::~TrafficLight() {
 
 }
