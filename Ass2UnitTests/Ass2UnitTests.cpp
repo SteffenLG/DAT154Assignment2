@@ -43,9 +43,9 @@ namespace Ass2UnitTests
 		{
 			TrafficLight light(1, 1, 0);
 			light.SetState(State::GREEN);
-			Assert::AreEqual(light.obstruct(), false);
+			Assert::AreEqual(light.Obstruct(), false);
 			light.SetState(State::REDYELLOW);
-			Assert::AreEqual(light.obstruct(), true);
+			Assert::AreEqual(light.Obstruct(), true);
 		}
 	};
 	TEST_CLASS(Name)
