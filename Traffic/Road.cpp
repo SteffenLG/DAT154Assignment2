@@ -10,7 +10,7 @@ void Road::SpawnCar()
 void Road::Draw(HDC hdc, Palette &palette)
 {
 	TrafficNode* temp = startNode.GetNext();
-	while (temp != endNode)
+	while (temp != &endNode)
 	{
 		temp->Draw(hdc, palette);
 		temp = temp->GetNext();
@@ -20,7 +20,7 @@ void Road::Draw(HDC hdc, Palette &palette)
 void Road::Update(int frameTime, HWND hWnd)
 {
 	TrafficNode* temp = startNode.GetNext();
-	while (temp != endNode)
+	while (temp != &endNode)
 	{
 		temp->Update(frameTime, hWnd);
 		temp = temp->GetNext();
@@ -35,7 +35,7 @@ void Road::ManageList()
 	TrafficNode* current = startNode.GetNext();
 	TrafficNode* next = current->GetNext();
 
-	while (current->GetNext() != endNode)
+	while (current->GetNext() != &endNode)
 	{
 		double currentDistance = prev->GetPos().DistanceTo(current->GetPos());
 		double nextDistance = prev->GetPos().DistanceTo(next->GetPos());
