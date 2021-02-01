@@ -1,6 +1,26 @@
 #include "World.h"
 
+World::World(int h, int w) 
+{
+	width = w;
+	height = h;
+	int centerX = width / 2;
+	int centerY = height / 2;
+	int laneWidth = 100;
+	int laneMid = laneWidth / 2;
 
+	northLight = new TrafficLight(centerX - laneMid, centerY - laneWidth, 80);
+	eastLight  = new TrafficLight(centerX + laneMid, centerY + laneWidth, 80);
+	southLight = new TrafficLight(centerX + laneWidth, centerY - laneMid, 80);
+	westLight  = new TrafficLight(centerX - laneWidth, centerY + laneMid, 80);
+
+	controller = new TrafficController(
+		northLight,
+		eastLight,
+		southLight,
+		westLight
+	);
+}
 
 void World::Draw(HDC hdc, Palette& palette) 
 {
@@ -65,20 +85,6 @@ void World::DrawRoads(HDC hdc, Palette& palette)
 	
 }
 
-void World::InitController()
-{
-	int centerX = width / 2;
-	int centerY = height / 2;
-	int laneWidth = 100;
-	int laneMid = laneWidth / 2;
-
-	controller = new TrafficController(
-		*new TrafficLight(centerX - laneMid, centerY - laneWidth, 80),
-		*new TrafficLight(centerX + laneMid, centerY + laneWidth, 80),
-		*new TrafficLight(centerX + laneWidth, centerY - laneMid, 80),	
-		*new TrafficLight(centerX - laneWidth, centerY + laneMid, 80)
-	);
-}
 World::~World() {
 	int i = 1;
 }

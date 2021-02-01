@@ -11,8 +11,6 @@ public:
 	TrafficLight* eastLight;
 	TrafficLight* westLight;
 
-	Road* westRoad;
-
 	TrafficController(TrafficLight*, TrafficLight*, TrafficLight*, TrafficLight*);
 	void Draw(HDC, Palette&);
 	void ChangeLightState();

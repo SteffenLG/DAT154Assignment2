@@ -6,22 +6,22 @@ TrafficController::TrafficController(
 	TrafficLight* e,
 	TrafficLight* w
 ) : 
-northLight{ n }, 
-southLight{ s }, 
-eastLight{ e }, 
-westLight{ w } 
+northLight( n ), 
+southLight( s ), 
+eastLight( e ), 
+westLight( w ) 
 {
 	northLight->SetState(State::RED);
 	southLight->SetState(State::RED);
 	eastLight->SetState(State::GREEN);
 	westLight->SetState(State::GREEN);
 
-	westRoad = new Road(Point(0, 425), Point(1600, 425), westLight);
-
-	westRoad->SpawnCar();
-	westRoad->SpawnCar();
-	westRoad->SpawnCar();
-	westRoad->SpawnCar();
+	//westRoad = Road(Point(0, 425), Point(1600, 425), westLight);
+	/*
+	westRoad.SpawnCar();
+	westRoad.SpawnCar();
+	westRoad.SpawnCar();
+	westRoad.SpawnCar();*/
 };
 
 void TrafficController::Draw(HDC hdc, Palette& palette)
@@ -30,7 +30,7 @@ void TrafficController::Draw(HDC hdc, Palette& palette)
 	southLight->Draw(hdc, palette);
 	eastLight->Draw(hdc, palette);
 	westLight->Draw(hdc, palette);
-	westRoad->Draw(hdc, palette);
+	//westRoad.Draw(hdc, palette);
 }
 
 void TrafficController::ChangeLightState()
@@ -46,5 +46,5 @@ void TrafficController::Update(HWND hWnd) {
 	southLight->Update(17,hWnd);
 	eastLight->Update(17,hWnd);
 	westLight->Update(17,hWnd);
-	westRoad->Update(17, hWnd);
+	//westRoad.Update(17, hWnd);
 }

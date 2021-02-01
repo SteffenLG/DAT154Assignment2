@@ -1,7 +1,7 @@
 #include "TrafficLight.h"
 #include "TrafficLightStates.h"
 
-TrafficLight::TrafficLight(int x, int y, int height):TrafficNode(Point(x, y), Point(0, 0), 0, height)
+TrafficLight::TrafficLight(int x, int y, int height) : TrafficNode(Point(x, y), Point(0, 0), 0, height)
 {
 	
 
