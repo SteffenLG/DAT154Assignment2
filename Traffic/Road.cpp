@@ -3,13 +3,13 @@
 void Road::SpawnCar()
 {
 	Car car(start, start.DirectionTo(end), 0, RandomColor(), 80);
-	car.SetNext(startNode->GetNext());
-	startNode->SetNext(&car);
+	car.SetNext(startNode.GetNext());
+	startNode.SetNext(&car);
 }
 
 void Road::Draw(HDC hdc, Palette &palette)
 {
-	TrafficNode* temp = startNode->GetNext();
+	TrafficNode* temp = startNode.GetNext();
 	while (temp != endNode)
 	{
 		temp->Draw(hdc, palette);
@@ -19,7 +19,7 @@ void Road::Draw(HDC hdc, Palette &palette)
 
 void Road::Update(int frameTime, HWND hWnd)
 {
-	TrafficNode* temp = startNode->GetNext();
+	TrafficNode* temp = startNode.GetNext();
 	while (temp != endNode)
 	{
 		temp->Update(frameTime, hWnd);
@@ -31,8 +31,23 @@ void Road::Update(int frameTime, HWND hWnd)
 
 void Road::ManageList()
 {
-	TrafficNode* temp = startNode;
-	while (temp->GetNext() != endNode)
+	TrafficNode* prev = &startNode;
+	TrafficNode* current = startNode.GetNext();
+	TrafficNode* next = current->GetNext();
+
+	while (current->GetNext() != endNode)
+	{
+		double currentDistance = prev->GetPos().DistanceTo(current->GetPos());
+		double nextDistance = prev->GetPos().DistanceTo(next->GetPos());
+
+		if (currentDistance > nextDistance)
+		{
+			prev->SetNext(next);
+			current->SetNext(next->GetNext());
+			next->SetNext(current);
+		}
+	}
+	/*while (temp->GetNext() != endNode)
 	{
 		TrafficNode* next = temp->GetNext();
 		TrafficNode* nextNext = temp->GetNext()->GetNext();
@@ -49,10 +64,10 @@ void Road::ManageList()
 			}
 		}
 		temp = temp->GetNext();
-	}
+	}*/
 
-	if (endNode->GetNext() != nullptr)
-		endNode->SetNext(nullptr);
+	if (endNode.GetNext() != nullptr)
+		endNode.SetNext(nullptr);
 }
 
 COLORREF Road::RandomColor()
